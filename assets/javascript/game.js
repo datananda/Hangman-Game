@@ -25,41 +25,60 @@ let hangmanGame = {
     lettersGuessed: [],
     currentWord: '',
     currentReveal: '',
-    newGame: function() {
+    startNewGame: function() {
         this.wins = 0;
         this.guessesRemaining = numGuesses;
         this.lettersGuessed = [];
         this.currentWord = words[Math.floor(Math.random() * words.length)];
         this.currentReveal = '';
         for (let i = 0; i < this.currentWord.length; i++) {
-            this.currentReveal += '_ ';
+            this.currentReveal += '_';
         }
         console.log("New Game. Starting with:")
         console.log(this);
     },
-    checkLetter: function(char, keyCode) {
+    checkIsLetter: function(char, keyCode) {
         if (keyCode >= 65 && keyCode <= 90) {
-            char = char.toLowerCase();
-            if (this.lettersGuessed.indexOf(char) === -1) {
-                console.log(`${char} is a good guess because you haven't guessed it yet`);
-                this.lettersGuessed.push(char);
-            }
-            else {
-                console.log(`You already guessed ${char}`);
-            }
+            this.checkIsNewGuess(char);
         }
         else {
             console.log("Not a letter!");
         }
+    },
+    checkIsNewGuess: function(char) {
+        char = char.toLowerCase();
+        if (this.lettersGuessed.indexOf(char) === -1) {
+            console.log(`${char} is a good guess because you haven't guessed it yet`);
+            this.checkInWord(char);
+        }
+        else {
+            console.log(`You already guessed ${char}`);
+        }
+    },
+    checkInWord: function(char) {
+        if (this.currentWord.includes(char)) {
+            this.revealLetters(char);
+        }
+        else {
+            this.lettersGuessed.push(char);
+        }
+    },
+    revealLetters: function(char) {
+        for (let i = 0; i < this.currentWord.length; i++) {
+            if (this.currentWord.charAt(i) === char) {
+                console.log(typeof )
+                this.currentReveal.charAt(i) = char;
+                console.log(this.currentReveal);
+            }
+        }
     }
 }
 
-hangmanGame.newGame();
+hangmanGame.startNewGame();
 
 document.onkeyup = function(event) {
     currentGuess = event.key;
     currentKeyCode = event.keyCode;
-    console.log(event);
     console.log(`Current guess: ${currentGuess}; Current keyCode: ${currentKeyCode}`);
-    hangmanGame.checkLetter(currentGuess, currentKeyCode);
+    hangmanGame.checkIsLetter(currentGuess, currentKeyCode);
 }
