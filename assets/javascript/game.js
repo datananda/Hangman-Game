@@ -23,17 +23,15 @@ let hangmanGame = {
     wins: 0,
     guessesRemaining: numGuesses,
     lettersGuessed: [],
-    currentWord: '',
-    currentReveal: '',
+    currentWord: [],
+    currentReveal: [],
     startNewGame: function() {
         this.wins = 0;
         this.guessesRemaining = numGuesses;
         this.lettersGuessed = [];
-        this.currentWord = words[Math.floor(Math.random() * words.length)];
-        this.currentReveal = '';
-        for (let i = 0; i < this.currentWord.length; i++) {
-            this.currentReveal += '_';
-        }
+        this.currentWord = words[Math.floor(Math.random() * words.length)].split('');
+        this.currentReveal.length = this.currentWord.length;
+        this.currentReveal.fill('_ ');
         console.log("New Game. Starting with:")
         console.log(this);
     },
@@ -48,7 +46,6 @@ let hangmanGame = {
     checkIsNewGuess: function(char) {
         char = char.toLowerCase();
         if (this.lettersGuessed.indexOf(char) === -1) {
-            console.log(`${char} is a good guess because you haven't guessed it yet`);
             this.checkInWord(char);
         }
         else {
@@ -61,15 +58,28 @@ let hangmanGame = {
         }
         else {
             this.lettersGuessed.push(char);
+            this.checkForLoss();
         }
     },
     revealLetters: function(char) {
         for (let i = 0; i < this.currentWord.length; i++) {
-            if (this.currentWord.charAt(i) === char) {
-                console.log(typeof )
-                this.currentReveal.charAt(i) = char;
-                console.log(this.currentReveal);
+            if (this.currentWord[i] === char) {
+                this.currentReveal[i] = char + ' ';
             }
+        }
+        this.checkForWin();
+    },
+    checkForLoss: function() {
+        if (this.guessesRemaining >= 1) {
+            this.guessesRemaining--;
+        }
+        else {
+            this.startNewGame();
+        }
+    },
+    checkForWin: function() {
+        if (this.currentReveal.indexOf('_ ') === -1) {
+            this.startNewGame();
         }
     }
 }
@@ -79,6 +89,5 @@ hangmanGame.startNewGame();
 document.onkeyup = function(event) {
     currentGuess = event.key;
     currentKeyCode = event.keyCode;
-    console.log(`Current guess: ${currentGuess}; Current keyCode: ${currentKeyCode}`);
     hangmanGame.checkIsLetter(currentGuess, currentKeyCode);
 }
