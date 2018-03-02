@@ -26,12 +26,12 @@ let hangmanGame = {
     currentWord: [],
     currentReveal: [],
     startNewGame: function() {
-        this.wins = 0;
         this.guessesRemaining = numGuesses;
         this.lettersGuessed = [];
         this.currentWord = words[Math.floor(Math.random() * words.length)].split('');
         this.currentReveal.length = this.currentWord.length;
-        this.currentReveal.fill('_ ');
+        this.currentReveal.fill('_');
+        this.printUpdate();
         console.log("New Game. Starting with:")
         console.log(this);
     },
@@ -58,6 +58,7 @@ let hangmanGame = {
         }
         else {
             this.lettersGuessed.push(char);
+            this.printUpdate();
             this.checkForLoss();
         }
     },
@@ -65,22 +66,31 @@ let hangmanGame = {
         for (let i = 0; i < this.currentWord.length; i++) {
             if (this.currentWord[i] === char) {
                 this.currentReveal[i] = char + ' ';
+                this.printUpdate();
             }
         }
         this.checkForWin();
     },
     checkForLoss: function() {
-        if (this.guessesRemaining >= 1) {
+        if (this.guessesRemaining > 1) {
             this.guessesRemaining--;
+            this.printUpdate();
         }
         else {
             this.startNewGame();
         }
     },
     checkForWin: function() {
-        if (this.currentReveal.indexOf('_ ') === -1) {
+        if (this.currentReveal.indexOf('_') === -1) {
+            this.wins++;
             this.startNewGame();
         }
+    },
+    printUpdate: function() {
+        document.getElementById("letters-guessed").innerHTML = this.lettersGuessed.join(' ');
+        document.getElementById("current-reveal").innerHTML = this.currentReveal.join(' ');
+        document.getElementById("guesses-number").innerHTML = this.guessesRemaining.toString();
+        document.getElementById("wins-number").innerHTML = this.wins.toString();
     }
 }
 
