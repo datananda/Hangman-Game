@@ -16,8 +16,10 @@ game object methods
     - check game: if currentReveal is all letters, increment wins, show a new word, reset variables 
 */
 const numGuesses = 12;
-let words = ["word","text","string","character"];
+let words = ["intelligentsia"];
 let currentGuess = '';
+let iconElement = document.createElement("i");
+iconElement.setAttribute("class","fas fa-anchor");
 
 let hangmanGame = {
     wins: 0,
@@ -65,7 +67,7 @@ let hangmanGame = {
     revealLetters: function(char) {
         for (let i = 0; i < this.currentWord.length; i++) {
             if (this.currentWord[i] === char) {
-                this.currentReveal[i] = char + ' ';
+                this.currentReveal[i] = char;
                 this.printUpdate();
             }
         }
@@ -84,12 +86,13 @@ let hangmanGame = {
         if (this.currentReveal.indexOf('_') === -1) {
             this.wins++;
             this.startNewGame();
+            document.getElementById("wins-icons").appendChild(iconElement.cloneNode());
         }
     },
     printUpdate: function() {
-        document.getElementById("letters-guessed").innerHTML = this.lettersGuessed.join(' ');
-        document.getElementById("current-reveal").innerHTML = this.currentReveal.join(' ');
-        document.getElementById("guesses-number").innerHTML = this.guessesRemaining.toString();
+        document.getElementById("letters-guessed").innerHTML = this.lettersGuessed.join('');
+        document.getElementById("current-reveal").innerHTML = this.currentReveal.join('');
+        // document.getElementById("guesses-number").innerHTML = this.guessesRemaining.toString();
         document.getElementById("wins-number").innerHTML = this.wins.toString();
     }
 }

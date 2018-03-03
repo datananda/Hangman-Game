@@ -1,21 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hangman Game</title>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Anonymous+Pro|Josefin+Sans|Josefin+Slab|Rye|Stalemate|Wire+One" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
-    <div>Press any key to get started!</div>
-    <div>Wins</div>
-    <div id="wins-number"></div>
-    <div>Current Word</div>
-    <div id="current-reveal"></div>
-    <div>Number of Guesses Remaining</div>
-    <div id="guesses-number"></div>
-    <div>Letters Already Guessed</div>
-    <div id="letters-guessed"></div>
+    <div class="container">
+        <header class="columns">
+            <div class="column text-center">
+                <h1>Hipsterman</h1>
+                <p>press a letter key to get started...</p>
+            </div>
+        </header>
+        <main>
+            <div class="columns text-center">
+                <div class="column">
+                    <img class="centered" src="http://images.all-free-download.com/images/graphicthumb/hand_drawn_people_hipster_elements_vector_set_543541.jpg"
+                        alt="">
+                    <div id="current-reveal" class="letters text-uppercase"></div>
+                    <div class="columns">
+                        <h2 class="col-2">Wins</h2>
+                        <div class="col-8" id="wins-number"></div>
+                    </div>
+                    <div id="wins-icons"></div>
+                    <h2>Losses</h2>
+                    <h2>Letters Already Guessed</h2>
+                    <div id="letters-guessed"></div>
+                    <h2>Number of Guesses Remaining</h2>
+                    <div class="bar">
+                        <div class="bar-item" style="width:100%;" id="letters-guessed">10</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
     <script src="assets/javascript/game.js"></script>
 </body>
+
 </html>
