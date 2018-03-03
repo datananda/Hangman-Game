@@ -22,25 +22,37 @@
             </div>
         </header>
         <main>
-            <div class="columns text-center">
+            <section class="hangman columns text-center">
                 <div class="column">
                     <img class="centered" src="http://images.all-free-download.com/images/graphicthumb/hand_drawn_people_hipster_elements_vector_set_543541.jpg"
                         alt="">
                     <div id="current-reveal" class="letters text-uppercase"></div>
-                    <div class="columns">
-                        <h2 class="col-2">Wins</h2>
-                        <div class="col-8" id="wins-number"></div>
-                    </div>
-                    <div id="wins-icons"></div>
-                    <h2>Losses</h2>
-                    <h2>Letters Already Guessed</h2>
-                    <div id="letters-guessed"></div>
-                    <h2>Number of Guesses Remaining</h2>
-                    <div class="bar">
-                        <div class="bar-item" style="width:100%;" id="letters-guessed">10</div>
+                </div>
+            </section>
+            <section class="game-stats">
+                <div class="columns">
+                    <div class="column">
+                        <h2 class="text-bold">Wins</h2>
+                        <div class="stat" id="wins-number"></div>
+                        <div class="stat" id="wins-icons"></div>
                     </div>
                 </div>
-            </div>
+                <div class="columns">
+                    <div class="column">
+                        <h2 class="text-bold">Letters Guessed</h2>
+                        <div class="stat" id="letters-guessed"></div>
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column">
+                        <h2 class="text-bold">Guesses Remaining</h2>
+                        <div class="stat" id="guesses-number"></div>
+                        <div class="bar">
+                            <div class="bar-item" style="width: 100%;" id="guesses-bar"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
     </div>
     <script src="assets/javascript/game.js"></script>

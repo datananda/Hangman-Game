@@ -90,10 +90,12 @@ let hangmanGame = {
         }
     },
     printUpdate: function() {
-        document.getElementById("letters-guessed").innerHTML = this.lettersGuessed.join('');
+        document.getElementById("letters-guessed").innerHTML = this.lettersGuessed.join(' ').toUpperCase();
         document.getElementById("current-reveal").innerHTML = this.currentReveal.join('');
-        // document.getElementById("guesses-number").innerHTML = this.guessesRemaining.toString();
-        document.getElementById("wins-number").innerHTML = this.wins.toString();
+        document.getElementById("guesses-number").innerHTML = this.guessesRemaining.toString();
+        let percentRemaining = 100 * this.guessesRemaining / numGuesses;
+        document.getElementById("guesses-bar").style.width = percentRemaining.toString() + "%";
+        document.getElementById("wins-number").innerHTML = `${this.wins.toString()}`;
     }
 }
 

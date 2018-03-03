@@ -1,5 +1,30 @@
+body {
+    background-image: url("../images/vintage-concrete.png");
+}
+
 h1 {
     font-family: 'Rye', cursive;
+    font-size: 2.5rem;
+    margin-top: .5rem;
+    margin-bottom: 0;
+    color: #05383E;
+}
+
+h2 {
+    padding-left: .4rem;
+}
+
+h2,
+.stat {
+    font-family: 'Wire One', sans-serif;
+    display: inline-block;
+    margin: .2em 0 .2em 0;
+    line-height: 1.2;
+    font-size: 1.6rem;
+}
+
+p {
+    margin-bottom: 0.2rem;
 }
 
 .letters {
@@ -7,4 +32,46 @@ h1 {
     font-size: 32px;
     letter-spacing: 5px;
     text-indent: 5px;
+}
+
+.game-stats {
+    color: white;
+}
+
+.game-stats .columns:nth-child(1) {
+    background-color: #02A6A7;
+}
+
+.game-stats .columns:nth-child(2) {
+    background-color: #DF543B;
+}
+
+.svg-inline--fa {
+    margin-left: 10px;
+}
+
+.bar,
+.game-stats {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
+.bar {
+    background: none;
+    height: 52px;
+    z-index: -1;
+}
+
+.bar,
+.bar-item {
+    border-radius: 0!important;
+}
+
+.bar-item {
+    background-color: #05383E!important;
+}
+
+.column {
+    padding: 0;
 }
