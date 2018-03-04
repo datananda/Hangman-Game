@@ -1,28 +1,7 @@
-/*
-game object properties
-    - wins: starts at 0 and increments
-    - number of guesses remaining: starts at 12 and decrements to 0
-    - letters already guessed: array of letters
-    - words: array of words
-    - current word: single string
 
-game object methods
-    - reset game: set wins to 0, set guessesRemaining to numGuesses, pick a word from list of words
-    - check if a letter is used
-    - check letter: takes key event, checks if it is a letter, & if so, that it hasn't been guessed already
-    - check letter: takes a key event as an argument and checks if that event is a letter, if letter that letter is in the currentWord
-            - if the letter is in currentWord, show the letters in currentReveal and check if game is won
-            - if the letter is not in currentWord, decrement guesses and add the letter to lettersGuessed
-    - check game: if currentReveal is all letters, increment wins, show a new word, reset variables 
-*/
-
-
-/* words
-["pour over","portland","umami","chia","gluten free","Brooklyn","cornhole","tofu","tote bag","banjo","bolo tie","street art","bespoke","asymmetrical","leggings","distillery","freegan","messenger bag","semiotics","forage","tattooed","fanny pack","keffiyeh","seitan","bicycle rights","pork belly","bitters","stumptown","sartorial","kitsch","wayfarers","YOLO","mixtape","American Apparel","sriracha","pickled","heirloom","Blue Bottle","butcher","pop up","cardigan","polaroid","retro","actually","normcore","ethical","pbr","whatever","quinoa","slow carb","beard","small batch","fixie","brunch","photo booth","mustache","flannel","occupy","kale chips","selvage","Cosby sweater","next level","chambray","single origin","farm to table","organic","flexitarian","dreamcatcher","gentrify","chillwave","vegan","food truck","locavore","tousled","hella","artisan","put a bird on it","VHS","twee","gastropub","vinyl","Pinterest","ugh","selfies","Etsy","Helvetica","paleo","Kickstarter","Pitchfork","typewriter","fingerstache","keytar","meggings","readymade","synth","DIY","art party","iPhone","Tumblr","trust fund","letterpress","hoodie","banh mi","sustainable","biodiesel","hashtag","pug","jean shorts","High Life","scenester","roof party","plaid","skateboard","disrupt","ennui","literally","raw denim","authentic","narwhal","Banksy","shabby chic","blog","swag","Wes Anderson","bespoke"]
-*/
 
 const numGuesses = 10;
-let words = ["intelligentsia"];
+let words = ["portland","umami","chia","brooklyn","cornhole","tofu","tote","banjo","bolo","bespoke","asymmetrical","leggings","distillery","freegan","semiotics","forage","tattooed","keffiyeh","seitan","bicycle","bitters","stumptown","sartorial","kitsch","wayfarers","yolo","mixtape","sriracha","pickled","heirloom","butcher","cardigan","polaroid","retro","actually","normcore","ethical","pbr","whatever","quinoa","beard","fixie","brunch","mustache","flannel","occupy","kale","selvage","chambray","organic","flexitarian","dreamcatcher","gentrify","chillwave","vegan","locavore","tousled","hella","artisan","twee","gastropub","vinyl","pinterest","ugh","selfies","etsy","helvetica","paleo","kickstarter","pitchfork","typewriter","fingerstache","keytar","meggings","readymade","synth","diy","iphone","tumblr","letterpress","hoodie","sustainable","biodiesel","hashtag","pug","scenester","plaid","skateboard","disrupt","ennui","literally","authentic","narwhal","banksy","blog","swag","bespoke"];
 let currentGuess = '';
 let iconElement = document.createElement("img");
 iconElement.setAttribute("src","assets/images/mustache.png")
@@ -37,7 +16,9 @@ let hangmanGame = {
     startNewGame: function() {
         this.guessesRemaining = numGuesses;
         this.lettersGuessed = [];
-        this.currentWord = words[Math.floor(Math.random() * words.length)].split(''); //TODO: ADD FUNCTIONALITY TO REMOVE SELECTED WORD FROM ARRAY OF WORD OPTIONS
+        let randNumber = Math.floor(Math.random() * words.length);
+        this.currentWord = words[randNumber].split('');
+        words.splice(randNumber, 1);
         this.currentReveal.length = this.currentWord.length; //TODO: ADD FUNCTIONALITY FOR WORDS WITH SPACES
         this.currentReveal.fill('_');
         this.printUpdate();
@@ -69,6 +50,7 @@ let hangmanGame = {
         }
         else {
             this.lettersGuessed.push(char);
+            this.guessesRemaining--;
             this.printUpdate();
             this.checkForLoss();
         }
@@ -83,21 +65,24 @@ let hangmanGame = {
         this.checkForWin();
     },
     checkForLoss: function() {
-        if (this.guessesRemaining > 1) {
-            this.guessesRemaining--;
-            this.printUpdate();
-        }
-        else {
-            //TODO: ADD PAUSE & LOSS SIGNAL BEFORE STARTING NEW GAME
-            this.startNewGame();
+        if (this.guessesRemaining === 0) {
+            let timeout = setTimeout(myFunc,1000);
+
+            function myFunc() {
+                hangmanGame.startNewGame();
+            }
         }
     },
     checkForWin: function() {
         if (this.currentReveal.indexOf('_') === -1) {
             this.wins++;
-            //TODO: ADD PAUSE & WIN SIGNAL BEFORE STARTING NEW GAME
-            this.startNewGame();
+            this.printUpdate();
             document.getElementById("wins-icons").appendChild(iconElement.cloneNode());
+            let timeout = setTimeout(myFunc,1000);
+
+            function myFunc() {
+                hangmanGame.startNewGame();
+            }
         }
     },
     printUpdate: function() {
