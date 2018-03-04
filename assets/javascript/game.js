@@ -22,7 +22,7 @@ game object methods
 */
 
 const numGuesses = 10;
-let words = ["pourover"];
+let words = ["intelligentsia"];
 let currentGuess = '';
 let iconElement = document.createElement("img");
 iconElement.setAttribute("src","assets/images/mustache.png")
