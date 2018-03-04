@@ -46,7 +46,8 @@ p {
     background-color: #DF543B;
 }
 
-.svg-inline--fa {
+.mustache-icon {
+    vertical-align: text-top;
     margin-left: 10px;
 }
 

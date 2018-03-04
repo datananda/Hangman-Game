@@ -18,8 +18,9 @@ game object methods
 const numGuesses = 12;
 let words = ["intelligentsia"];
 let currentGuess = '';
-let iconElement = document.createElement("i");
-iconElement.setAttribute("class","fas fa-anchor");
+let iconElement = document.createElement("img");
+iconElement.setAttribute("src","assets/images/mustache.png")
+iconElement.setAttribute("class","mustache-icon");
 
 let hangmanGame = {
     wins: 0,
