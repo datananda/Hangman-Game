@@ -1,10 +1,26 @@
+html,
+body,
+.container-fluid,
+.row {
+    height: 100%;
+}
+
 body {
     background-image: url("../images/vintage-concrete.png");
 }
 
+.hipster-container {
+    background-color: rgba(255,255,255,0.5);
+    border-right: 2px dashed #05383E;
+}
+
+.hipster-container img {
+    height: 98%;
+}
+
 h1 {
     font-family: 'Rye', cursive;
-    font-size: 2.5rem;
+    font-size: 4.5rem;
     margin-top: .5rem;
     margin-bottom: 0;
     color: #05383E;
@@ -29,20 +45,20 @@ p {
 
 .letters {
     font-family: 'Anonymous Pro', monospace;
-    font-size: 32px;
+    font-size: 4rem;
     letter-spacing: 5px;
     text-indent: 5px;
 }
 
-.game-stats {
+.scoring {
     color: white;
 }
 
-.game-stats .columns:nth-child(1) {
+.scoring:nth-of-type(2) {
     background-color: #02A6A7;
 }
 
-.game-stats .columns:nth-child(2) {
+.scoring:nth-of-type(3) {
     background-color: #DF543B;
 }
 
@@ -66,11 +82,12 @@ p {
 
 .bar,
 .bar-item {
-    border-radius: 0!important;
+    border-radius: 0;
 }
 
 .bar-item {
-    background-color: #05383E!important;
+    background-color: #05383E;
+    height: 100%;
 }
 
 .column {

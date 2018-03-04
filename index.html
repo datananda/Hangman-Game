@@ -7,52 +7,43 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hangman Game</title>
     <link href="https://fonts.googleapis.com/css?family=Anonymous+Pro|Josefin+Sans|Josefin+Slab|Rye|Stalemate|Wire+One" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
-    <div class="container">
-        <header class="columns">
-            <div class="column text-center">
-                <h1>Hipsterman</h1>
-                <p>press a letter key to get started...</p>
-            </div>
-        </header>
-        <main>
-            <section class="hangman columns text-center">
-                <div class="column">
-                    <img class="centered" src="http://images.all-free-download.com/images/graphicthumb/hand_drawn_people_hipster_elements_vector_set_543541.jpg"
-                        alt="">
-                    <div id="current-reveal" class="letters text-uppercase"></div>
-                </div>
-            </section>
-            <section class="game-stats">
-                <div class="columns">
-                    <div class="column">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 order-md-2 px-0">
+                <header class="text-center">
+                    <h1>Hipsterman</h1>
+                    <p>press a letter key to get started...</p>
+                </header>
+                <section class="game-stats">
+                    <div id="current-reveal" class="letters text-uppercase text-center"></div>
+                    <div class="scoring">
                         <h2 class="text-bold">Wins</h2>
                         <div class="stat" id="wins-number"></div>
                         <div class="stat" id="wins-icons"></div>
                     </div>
-                </div>
-                <div class="columns">
-                    <div class="column">
+                    <div class="scoring">
                         <h2 class="text-bold">Letters Guessed</h2>
                         <div class="stat" id="letters-guessed"></div>
                     </div>
-                </div>
-                <div class="columns">
-                    <div class="column">
+                    <div class="scoring">
                         <h2 class="text-bold">Guesses Remaining</h2>
                         <div class="stat" id="guesses-number"></div>
                         <div class="bar">
                             <div class="bar-item" style="width: 100%;" id="guesses-bar"></div>
                         </div>
                     </div>
-                </div>
-            </section>
-        </main>
+                </section>
+            </div>
+            <div class="col-md-4 order-md-1 hipster-container">
+                <img class="mx-auto d-block" id="hipsterman" src="assets/images/hangman0.png">
+            </div>
+        </div>
     </div>
     <script src="assets/javascript/game.js"></script>
 </body>

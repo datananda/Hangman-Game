@@ -21,7 +21,7 @@ game object methods
 ["pour over","portland","umami","chia","gluten free","Brooklyn","cornhole","tofu","tote bag","banjo","bolo tie","street art","bespoke","asymmetrical","leggings","distillery","freegan","messenger bag","semiotics","forage","tattooed","fanny pack","keffiyeh","seitan","bicycle rights","pork belly","bitters","stumptown","sartorial","kitsch","wayfarers","YOLO","mixtape","American Apparel","sriracha","pickled","heirloom","Blue Bottle","butcher","pop up","cardigan","polaroid","retro","actually","normcore","ethical","pbr","whatever","quinoa","slow carb","beard","small batch","fixie","brunch","photo booth","mustache","flannel","occupy","kale chips","selvage","Cosby sweater","next level","chambray","single origin","farm to table","organic","flexitarian","dreamcatcher","gentrify","chillwave","vegan","food truck","locavore","tousled","hella","artisan","put a bird on it","VHS","twee","gastropub","vinyl","Pinterest","ugh","selfies","Etsy","Helvetica","paleo","Kickstarter","Pitchfork","typewriter","fingerstache","keytar","meggings","readymade","synth","DIY","art party","iPhone","Tumblr","trust fund","letterpress","hoodie","banh mi","sustainable","biodiesel","hashtag","pug","jean shorts","High Life","scenester","roof party","plaid","skateboard","disrupt","ennui","literally","raw denim","authentic","narwhal","Banksy","shabby chic","blog","swag","Wes Anderson","bespoke"]
 */
 
-const numGuesses = 12;
+const numGuesses = 10;
 let words = ["pourover"];
 let currentGuess = '';
 let iconElement = document.createElement("img");
@@ -41,6 +41,7 @@ let hangmanGame = {
         this.currentReveal.length = this.currentWord.length; //TODO: ADD FUNCTIONALITY FOR WORDS WITH SPACES
         this.currentReveal.fill('_');
         this.printUpdate();
+        document.getElementById("hipsterman").setAttribute("src","assets/images/hangman0.png");
         console.log("New Game. Starting with:")
         console.log(this);
     },
@@ -106,6 +107,7 @@ let hangmanGame = {
         let percentRemaining = 100 * this.guessesRemaining / numGuesses;
         document.getElementById("guesses-bar").style.width = percentRemaining.toString() + "%";
         document.getElementById("wins-number").innerHTML = `${this.wins.toString()}`;
+        document.getElementById("hipsterman").setAttribute("src","assets/images/hangman" + (numGuesses - this.guessesRemaining) + ".png");
     }
 }
 
