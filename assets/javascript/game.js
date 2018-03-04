@@ -15,8 +15,14 @@ game object methods
             - if the letter is not in currentWord, decrement guesses and add the letter to lettersGuessed
     - check game: if currentReveal is all letters, increment wins, show a new word, reset variables 
 */
+
+
+/* words
+["pour over","portland","umami","chia","gluten free","Brooklyn","cornhole","tofu","tote bag","banjo","bolo tie","street art","bespoke","asymmetrical","leggings","distillery","freegan","messenger bag","semiotics","forage","tattooed","fanny pack","keffiyeh","seitan","bicycle rights","pork belly","bitters","stumptown","sartorial","kitsch","wayfarers","YOLO","mixtape","American Apparel","sriracha","pickled","heirloom","Blue Bottle","butcher","pop up","cardigan","polaroid","retro","actually","normcore","ethical","pbr","whatever","quinoa","slow carb","beard","small batch","fixie","brunch","photo booth","mustache","flannel","occupy","kale chips","selvage","Cosby sweater","next level","chambray","single origin","farm to table","organic","flexitarian","dreamcatcher","gentrify","chillwave","vegan","food truck","locavore","tousled","hella","artisan","put a bird on it","VHS","twee","gastropub","vinyl","Pinterest","ugh","selfies","Etsy","Helvetica","paleo","Kickstarter","Pitchfork","typewriter","fingerstache","keytar","meggings","readymade","synth","DIY","art party","iPhone","Tumblr","trust fund","letterpress","hoodie","banh mi","sustainable","biodiesel","hashtag","pug","jean shorts","High Life","scenester","roof party","plaid","skateboard","disrupt","ennui","literally","raw denim","authentic","narwhal","Banksy","shabby chic","blog","swag","Wes Anderson","bespoke"]
+*/
+
 const numGuesses = 12;
-let words = ["intelligentsia"];
+let words = ["pourover"];
 let currentGuess = '';
 let iconElement = document.createElement("img");
 iconElement.setAttribute("src","assets/images/mustache.png")
@@ -31,8 +37,8 @@ let hangmanGame = {
     startNewGame: function() {
         this.guessesRemaining = numGuesses;
         this.lettersGuessed = [];
-        this.currentWord = words[Math.floor(Math.random() * words.length)].split('');
-        this.currentReveal.length = this.currentWord.length;
+        this.currentWord = words[Math.floor(Math.random() * words.length)].split(''); //TODO: ADD FUNCTIONALITY TO REMOVE SELECTED WORD FROM ARRAY OF WORD OPTIONS
+        this.currentReveal.length = this.currentWord.length; //TODO: ADD FUNCTIONALITY FOR WORDS WITH SPACES
         this.currentReveal.fill('_');
         this.printUpdate();
         console.log("New Game. Starting with:")
@@ -52,6 +58,7 @@ let hangmanGame = {
             this.checkInWord(char);
         }
         else {
+            //TODO: ADD SIGNAL IF LETTER ALREADY GUESSED
             console.log(`You already guessed ${char}`);
         }
     },
@@ -80,12 +87,14 @@ let hangmanGame = {
             this.printUpdate();
         }
         else {
+            //TODO: ADD PAUSE & LOSS SIGNAL BEFORE STARTING NEW GAME
             this.startNewGame();
         }
     },
     checkForWin: function() {
         if (this.currentReveal.indexOf('_') === -1) {
             this.wins++;
+            //TODO: ADD PAUSE & WIN SIGNAL BEFORE STARTING NEW GAME
             this.startNewGame();
             document.getElementById("wins-icons").appendChild(iconElement.cloneNode());
         }
