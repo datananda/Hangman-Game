@@ -1,5 +1,3 @@
-
-
 const numGuesses = 10;
 let words = ["portland","umami","chia","brooklyn","cornhole","tofu","tote","banjo","bolo","bespoke","asymmetrical","leggings","distillery","freegan","semiotics","forage","tattooed","keffiyeh","seitan","bicycle","bitters","stumptown","sartorial","kitsch","wayfarers","yolo","mixtape","sriracha","pickled","heirloom","butcher","cardigan","polaroid","retro","actually","normcore","ethical","pbr","whatever","quinoa","beard","fixie","brunch","mustache","flannel","occupy","kale","selvage","chambray","organic","flexitarian","dreamcatcher","gentrify","chillwave","vegan","locavore","tousled","hella","artisan","twee","gastropub","vinyl","pinterest","ugh","selfies","etsy","helvetica","paleo","kickstarter","pitchfork","typewriter","fingerstache","keytar","meggings","readymade","synth","diy","iphone","tumblr","letterpress","hoodie","sustainable","biodiesel","hashtag","pug","scenester","plaid","skateboard","disrupt","ennui","literally","authentic","narwhal","banksy","blog","swag","bespoke"];
 let currentGuess = '';
@@ -23,15 +21,13 @@ let hangmanGame = {
         this.currentReveal.fill('_');
         this.printUpdate();
         document.getElementById("hipsterman").setAttribute("src","assets/images/hangman0.png");
-        console.log("New Game. Starting with:")
-        console.log(this);
     },
     checkIsLetter: function(char, keyCode) {
         if (keyCode >= 65 && keyCode <= 90) {
             this.checkIsNewGuess(char);
         }
         else {
-            console.log("Not a letter!");
+            //TODO: ADD SIGNAL IF NON LETTER PRESSED
         }
     },
     checkIsNewGuess: function(char) {
@@ -41,7 +37,6 @@ let hangmanGame = {
         }
         else {
             //TODO: ADD SIGNAL IF LETTER ALREADY GUESSED
-            console.log(`You already guessed ${char}`);
         }
     },
     checkInWord: function(char) {
