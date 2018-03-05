@@ -7,7 +7,7 @@ A hipster-themed hangman game.
 
 ## Game Play
 
-The game is played through keyboard input. Only letter keys are allowed, though you are not penalized for pressing a non-letter key. The user tries to guess letters that appear in the hipster-themed word.
+The game is played through keyboard input. Only letter keys are allowed, though you are not penalized for pressing other keys. The user tries to guess letters that appear in the currently selected hipster-themed word.
 
 Thanks and credit for the excellent word selection goes to [Hipsum](https://hipsum.co/).
 
@@ -17,4 +17,4 @@ When a correct guess is made, the letter is revealed. If the last letter is reve
 
 ### Incorrect Guess
 
-When an incorrect guess is made, the hipsterman dresses himself up in another hipster accessory. If 10 incorrect guesses are made, the hipster starts smoking a cigarette and a new game starts automatically.
+When an incorrect guess is made, the hipsterman dresses himself up with another hipster accessory. If 10 incorrect guesses are made, the hipster starts smoking a cigarette and a new game starts automatically.
